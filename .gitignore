@@ -1,0 +1,15 @@
+# Local / generated
+.DS_Store
+__pycache__/
+*.pyc
+.venv/
+.env
+
+# Do not commit multi-GB artifacts
+*.pt
+*.safetensors
+*.mp4
+*.tar.gz
+checkpoints/
+evaluate_results/
+outputs/
