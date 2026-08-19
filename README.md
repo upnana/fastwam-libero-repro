@@ -37,6 +37,7 @@ Checkpoint：`libero_uncond_2cam224.pt`
 | [`docs/SR0_ANALYSIS.md`](docs/SR0_ANALYSIS.md) | SR=0 排查过程与双重归一化证明 |
 | [`docs/RESULTS.md`](docs/RESULTS.md) | 数字汇总、与论文对照、简历写法注意 |
 | [`docs/SETUP.md`](docs/SETUP.md) | 可复跑的环境与命令备忘 |
+| [`docs/DISTILL_EXPLAINED.md`](docs/DISTILL_EXPLAINED.md) | FastWAM→小 VLA 动作蒸馏：teacher/student、rollout/dump、loss、代码示例 |
 | [`scripts/run_libero_eval_sequential.sh`](scripts/run_libero_eval_sequential.sh) | 单卡顺序全量评测脚本（无 tmux） |
 
 ## 本机关键路径（记录用）
