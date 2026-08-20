@@ -1,0 +1,37 @@
+{
+  "generated_at": "2026-08-20T14:11:02",
+  "pipeline": "FastWAM (frozen) → multi-task dump → SmolVLA distill → aligned LIBERO eval",
+  "machine": "1x NVIDIA H100 80GB",
+  "dump": {
+    "format": "env_rollout",
+    "backend": "fastwam_official_local",
+    "num_samples": 330,
+    "episodes_per_task": 10,
+    "stride": 8,
+    "task": "libero_spatial",
+    "task_ids": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+    "n_tasks_dumped": 10,
+    "teacher_ckpt": "libero_uncond_2cam224.pt",
+    "action_chunk_shape": [330, 32, 7]
+  },
+  "train": {
+    "student": "lerobot/smolvla_base",
+    "steps": 5000,
+    "batch_size": 4,
+    "chunk_size": 32,
+    "num_samples": 330,
+    "supervision": "a_teacher_only"
+  },
+  "eval": {
+    "task": "libero_spatial",
+    "task_ids": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+    "n_episodes_per_task": 10,
+    "aligned_to_dump": true,
+    "n_episodes": 100,
+    "pc_success": 1.0,
+    "success_note": "1/100; success on task_id=7 only"
+  },
+  "pc_success": 1.0,
+  "analysis_doc": "docs/DISTILL_RESULTS.md",
+  "resume_note": "MVP exploration only. Not a SOTA claim. Main FastWAM result remains 97.1% on 2000 episodes."
+}

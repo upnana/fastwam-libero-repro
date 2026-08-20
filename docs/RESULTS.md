@@ -42,6 +42,20 @@
 
 ---
 
+## 动作蒸馏 MVP（次要结果）
+
+| 项 | 值 |
+|----|-----|
+| Teacher | 官方 FastWAM `libero_uncond_2cam224`（冻结） |
+| Dump | `libero_spatial` task 0–9，10 eps/task，**330** samples |
+| Student | SmolVLA，5000 steps，仅 `a_teacher` |
+| Eval | 对齐 dump task ids，100 eps |
+| **Student SR** | **1.0%**（1/100，task 7） |
+
+分析：[`DISTILL_RESULTS.md`](DISTILL_RESULTS.md) · JSON：[`../results/fastwam_distill_multitask_sr_summary.json`](../results/fastwam_distill_multitask_sr_summary.json)
+
+---
+
 ## 简历 / 项目经历建议写法
 
 **可以写：**
@@ -49,12 +63,14 @@
 - 独立复现 FastWAM 官方 LIBERO 评测（2000 episodes），Overall **97.1%**，接近论文 **97.6%**
 - 排查 LeRobot 集成 SR=0：定位图像双重归一化并修复，smoke **0%→100%**
 - 熟悉 VLA vs WAM、FastWAM「训练有视频建模、推理不做未来想象」的设定
+- （可选）探索 FastWAM→小 VLA 动作蒸馏管线；小规模纯 teacher 监督下 student SR ≈ 1%，验证对齐评测与数据瓶颈
 
 **不要写：**
 
 - 「提出 FastWAM / 达到 SOTA」
 - 「我训出了与论文一致的模型」（实际是官方权重复现）
 - 「复现了官方真机毛巾折叠」（本仓库未做）
+- 「蒸馏达到高 SR / 接近 FastWAM」（当前仅 1%）
 
 ### 可直接粘贴的条目
 

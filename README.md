@@ -39,7 +39,19 @@ Checkpoint：`libero_uncond_2cam224.pt`
 | [`docs/SETUP.md`](docs/SETUP.md) | 可复跑的环境与命令备忘 |
 | [`docs/DISTILL_EXPLAINED.md`](docs/DISTILL_EXPLAINED.md) | FastWAM→小 VLA 动作蒸馏：teacher/student、rollout/dump、loss 概念 |
 | [`docs/DISTILL_CODE_EXAMPLES.md`](docs/DISTILL_CODE_EXAMPLES.md) | 对照真实实现的 dump / train / loss 代码示例 |
+| [`docs/DISTILL_RESULTS.md`](docs/DISTILL_RESULTS.md) | 多 task dump + 对齐 eval 的 **实验结果与分析**（student SR ≈ 1%） |
+| [`results/fastwam_distill_multitask_sr_summary.json`](results/fastwam_distill_multitask_sr_summary.json) | 蒸馏实验机器可读汇总 |
 | [`scripts/run_libero_eval_sequential.sh`](scripts/run_libero_eval_sequential.sh) | 单卡顺序全量评测脚本（无 tmux） |
+
+## 动作蒸馏探索（MVP，非主结果）
+
+在官方 FastWAM 复现之外，额外搭了 **冻结 FastWAM → SmolVLA action distillation** 管线：
+
+- Dump：`libero_spatial` 全 10 task × 10 eps/task → **330** teacher action chunks  
+- Train：SmolVLA **5000** steps，标签仅为 `a_teacher`  
+- Eval：**对齐** dump 的 task ids，100 episodes → student **pc_success = 1.0%**
+
+详见 [`docs/DISTILL_RESULTS.md`](docs/DISTILL_RESULTS.md)。写简历时蒸馏写成「探索 / 管线」，**不要**用 1% 盖过 97.1% 复现。
 
 ## 本机关键路径（记录用）
 
